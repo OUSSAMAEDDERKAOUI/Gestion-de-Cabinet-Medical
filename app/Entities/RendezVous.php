@@ -12,6 +12,7 @@ class RendezVous
     public function __construct($id_rendez_vous, $date, $description, $id_medecin, $id_patient)
     {
         $this->id_rendez_vous = $id_rendez_vous;
+        $this->date = $date;
         $this->description = $description;
         $this->id_medecin = $id_medecin;
         $this->id_patient = $id_patient;
@@ -60,8 +61,6 @@ class RendezVous
     {
         $this->id_patient = $id_patient;
     }
-
-    // methods
 
    
 }
