@@ -17,11 +17,10 @@ class Database {
 
     public static function getInstance($dsn = null, $username = null, $password = null) {
         if (self::$instance === null) {
-            $dsn = $dsn ?? 'mysql:host=localhost;dbname=gestion_cabinet_medical;charset=utf8mb4'; 
+            $dsn = $dsn ?? 'pgsql:host=localhost;dbname=gestion_cabinet_medical'; 
             $username = $username ?? 'postgres';
             $password = $password ?? '1234';
             self::$instance = new Database($dsn, $username, $password);
-
 
         }
         return self::$instance;

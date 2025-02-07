@@ -29,3 +29,15 @@ id_patient INT NOT NULL ,
 FOREIGN KEY (id_medecin) REFERENCES users(id)  ON DELETE CASCADE ON UPDATE CASCADE ,
 FOREIGN KEY (id_patient) REFERENCES USERS (id) ON DELETE CASCADE ON update CASCADE 
 )
+
+CREATE TYPE statut_rendez_vous AS ENUM ('confirme', 'annule');
+
+ALTER TABLE rendez_vous
+ADD COLUMN statut statut_rendez_vous;
+
+ALTER TYPE statut_rendez_vous ADD VALUE 'en_attente';
+
+ALTER TABLE rendez_vous
+ALTER COLUMN statut SET DEFAULT 'en_attente';
+
+
