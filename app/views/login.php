@@ -25,7 +25,7 @@
                 </h2>
                 
             </div>
-            <form method="POST" action="../../public/index.php" id="loginForm" class="mt-8 space-y-6">
+            <form method="POST" action="../../public/index.php/login" id="loginForm" class="mt-8 space-y-6">
                 <div class="rounded-md shadow-sm flex flex-col gap-5">
                     <div>
                         <label for="email" class="sr-only">Adresse email</label>

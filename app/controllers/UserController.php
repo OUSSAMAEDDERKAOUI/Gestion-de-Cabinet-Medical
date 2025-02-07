@@ -13,14 +13,15 @@ class UserController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = $_POST['email'];
             $password = $_POST['password'];
-
+            
             $userRepository = new UserRepository();
             $loggedUser = $userRepository->findByEmailAndPassword($email, $password);
 
             if ($loggedUser) {
                 $_SESSION['user_id'] = $loggedUser->getIdUser();
                 $_SESSION['user_role'] = $loggedUser->getRole();
-                header('Location: ../../public/index.php?action=dashboard');
+                echo 'ygvb';
+                include_once('Location: ../../public/index.php/dashboard');
                 exit;
             } else {
                 echo 'Identifiants invalides.';
@@ -28,5 +29,8 @@ class UserController {
         } else {
             include_once __DIR__ . '/../views/login.php';
         }
+    }
+    public function index() {
+        include_once __DIR__ . '/../views/dashboard.php';
     }
 }

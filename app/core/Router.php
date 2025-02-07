@@ -11,10 +11,11 @@ class Router {
     }
 
     public function handleRequest($url) {
+      
         if (array_key_exists($url, $this->routes)) {
             $controllerName = $this->routes[$url]['controller'];
             $actionName = $this->routes[$url]['action'];
-
+            var_dump($this->routes[$url]); 
             require_once(__DIR__ . '/../controllers/UserController.php');
 
             $controller = new $controllerName();
@@ -23,5 +24,7 @@ class Router {
         } else {
             echo 'Route non trouvée.';
         }
+
     }
+   
 }
