@@ -1,8 +1,10 @@
 <?php
 
-require_once '../config/database.php';
 class RendezVous
 {
+    use Model;
+    use Database;
+
     private $id_rendez_vous;
     private $date;
     private $description;
@@ -62,5 +64,16 @@ class RendezVous
         $this->id_patient = $id_patient;
     }
 
-   
+    function addRendezVous()
+    {
+        $query = "INSERT INTO rendez_vous (id_medecin, id_patient,  description) 
+                  VALUES (:id_medecin, :id_patient, :description)";
+        $con = $this->connect();
+        $stmt = $con->prepare($query);       
+        $stmt->bindParam(':id_medecin', $this->id_medecin);
+        $stmt->bindParam(':id_patient', $this->id_patient);
+        $stmt->bindParam(':description', $this->description);
+        $result = $stmt->execute();
+        return $result;
+    }   
 }
